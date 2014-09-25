@@ -16,16 +16,37 @@ if has("autocmd")
     " Use actual tab chars in Makefiles.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 endif
+
+let mapleader = "," " change the mapleader from \ to ,
+
 " For everything else, use a tab width of 4 space chars.
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
                     " Vim will interpret it to be having
                     " a width of 4.
+
+set backspace=indent,eol,start    " allow backspacing over everything in insert mode
+
+set autoindent      " always set autoindenting on
+set copyindent      " copy the previous indentation on autoindenting
+set number          " always show line numbers
+set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch       " set show matching parenthesis
+set ignorecase      " ignore case when searching
+set hlsearch        " highlight search terms
+set incsearch       " show search matches as you type
 set shiftwidth=4    " Indents will have a width of 4.
 set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
 
-let mapleader = ","
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+
+set pastetoggle=<F2>
+
+
+
+
 :nnoremap <F5> :buffers<CR>:buffer<Space>
 execute pathogen#infect()
 call pathogen#helptags() 
@@ -41,12 +62,15 @@ let g:nerdtree_tabs_open_on_console_startup=0
 let g:nerdtree_tabs_open_on_gui_startup=0
 let g:nerdtree_tabs_smart_startup_focus=2
 
-let NERDTreeIgnore=['\~$', 'CVS', '^\.git', '\.swp$', '\.DS_Store$']
+let NERDTreeIgnore=['.svn$', 'CVS$', '^\.git$', '\.swp$', '\.DS_Store$']
 let NERDTreeShowHidden=1
+let NERDTreeChDirMode=2
 
+if has("gui_running")
 syntax enable
 set background=light
 colorscheme solarized
+endif
 
 
 " ---------------------------------------------------------------------------
@@ -58,6 +82,5 @@ let Tlist_Compact_Format=0
 let Tlist_WinWidth=28
 let Tlist_Exit_OnlyWindow=1
 let Tlist_File_Fold_Auto_Close = 1
-"nmap <LocalLeader>tt :Tlist<cr>
 :nnoremap <F6> :Tlist<CR>
 
