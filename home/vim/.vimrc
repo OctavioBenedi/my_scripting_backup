@@ -4,6 +4,10 @@ set wildmenu
 set wildmode=list:longest
 set title
 set ruler
+
+"save file with sudo
+cmap w!! w !sudo tee >/dev/null %
+
 syntax on
 filetype on
 filetype plugin on
@@ -29,7 +33,7 @@ set backspace=indent,eol,start    " allow backspacing over everything in insert 
 
 set autoindent      " always set autoindenting on
 set copyindent      " copy the previous indentation on autoindenting
-set number          " always show line numbers
+"set number          " always show line numbers
 set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch       " set show matching parenthesis
 set ignorecase      " ignore case when searching
